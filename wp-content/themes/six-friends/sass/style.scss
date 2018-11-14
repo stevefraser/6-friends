@@ -23,6 +23,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 /*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------
+# NCF
 # Normalize
 # Typography
 # Elements
@@ -42,8 +43,17 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	## Captions
 	## Galleries
 --------------------------------------------------------------*/
+
 @import "variables-site/variables-site";
 @import "mixins/mixins-master";
+
+/*--------------------------------------------------------------
+# NCF
+--------------------------------------------------------------*/
+@import "ncf/layout";
+@import "ncf/header";
+@import "ncf/menus";
+@import "ncf/fonts";
 
 /*--------------------------------------------------------------
 # Normalize

@@ -42,11 +42,6 @@ if ( ! function_exists( 'six_friends_setup' ) ) :
 		 */
 		add_theme_support( 'post-thumbnails' );
 
-		// This theme uses wp_nav_menu() in one location.
-		register_nav_menus( array(
-			'top-menu' => esc_html__( 'Primary', 'six-friends' ),
-			'drop-menu' => esc_html__( 'Mobile Drop Menu', 'six-friends' ),
-		) );
 
 		/*
 		 * Switch default core markup for search form, comment form, and comments
@@ -131,29 +126,10 @@ function six_friends_scripts() {
 	// 	wp_enqueue_script( 'comment-reply' );
 	// }
 
-	wp_register_script( 'main-scripts', get_template_directory_uri() . '/js/scripts.js', array( 'jquery', 'jquery-ui-core' ), '1.0.0', false );
-		wp_enqueue_script( 'main-scripts' );
-
-	wp_register_script( 'flexslider', get_template_directory_uri() . '/js/jquery.flexslider.min.js', array( 'jquery' ), '1.0.0', false );
-		wp_enqueue_script( 'flexslider' );
-
-	wp_register_script( 'fancybox', get_template_directory_uri() . '/js/jquery.fancybox.min.js', array( 'jquery' ), '1.0.0', false );
-		wp_enqueue_script( 'fancybox' );
-
-	// AJAX SCRIPT - AJAX SCRIPTS
-	wp_register_script( 'ajax-functions', get_template_directory_uri() . '/js/ajax-functions.js', array( 'jquery' ), '1.0.0', false );
-    wp_localize_script( 'ajax-functions', 'ajax_function', array(
-    		'ajax_url' => admin_url( 'admin-ajax.php' )
-    	) );
-    wp_enqueue_script( 'ajax-functions' );
-
 
 }
 add_action( 'wp_enqueue_scripts', 'six_friends_scripts' );
 
-
-// include ajax PHP file
-	load_template(TEMPLATEPATH . '/ajax-functions.php');
 
 
 /**
@@ -176,7 +152,7 @@ require get_template_directory() . '/inc/template-functions.php';
  */
 require get_template_directory() . '/inc/customizer.php';
 
-require get_template_directory() . '/inc/wtf.php';
+
 
 
 /**
@@ -187,20 +163,7 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 }
 
 
-// Changes the default Gravity Forms AJAX spinner.
-add_filter( 'gform_ajax_spinner_url', 'custom_gforms_spinner' );
-function custom_gforms_spinner( $src ) {
-    return get_stylesheet_directory_uri() . '/img/gravity-forms-spinner.gif';
-}
 
-
-
-// Remove WP Admin Bar bump
-add_action('get_header', 'my_filter_head');
-
-function my_filter_head() {
-remove_action('wp_head', '_admin_bar_bump_cb');
-}
 
 
 

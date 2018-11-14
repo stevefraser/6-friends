@@ -79,9 +79,10 @@ jQuery(document).ready(function ($) {
 
 
 
-    $('#nav-icon').click(function(){
-        $(this).toggleClass('open');
-        $("#dropmenu").toggleClass('open');
+    $('#nav-icon, button.overlay-close').click(function(){
+        //$(this).toggleClass('open');
+        //$("#dropmenu").toggleClass('open');
+        $(".overlay-scale").toggleClass('open');
     });
 
 

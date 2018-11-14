@@ -1,0 +1,46 @@
+header {
+	background: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  height: 100px;
+  border-bottom: 3px solid $color__maroon;
+  .nav-logo {
+  	height: 85px;
+    margin-top: 5px;
+    margin-left: 20px;
+    img {
+    	max-height: 100%;
+    }
+  }
+  .menu-main-menu-top-container {
+  	width: auto;
+    float: right;
+    margin-right: 100px;
+    top: 50%;
+    position: absolute;
+    right: 5px;
+    transform: translateY(-50%);
+    ul.topmenu {
+    	margin-bottom: 0;
+    	li {
+    		display: inline-block;
+    		a {
+    			font-family: 'Gotham-Book';
+    			text-transform: uppercase;
+			    text-decoration: none;
+			    font-size: 0.9rem;
+			    letter-spacing: 0.8px;
+			    color: #000;
+			    padding: 0.5rem;
+			    transition: ease-in-out all 0.3s;
+			    &:hover {
+			    	color: $color__maroon;
+			    }
+    		}
+    	}
+    }
+  }
+}
