@@ -13,3 +13,40 @@
   -moz-transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
 }
+
+.invisible {
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+.hidden {
+  display: none;
+}
+
+
+#preloader  {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fefefe;
+  z-index: 99999999999;
+  height: 100%;
+  height: 100vh;
+ }
+
+#status  {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background-image: url(img/ajax-loader.gif);
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: -100px 0 0 -100px;
+  z-index: 9999999999999;
+}
+.centered {
+  text-align: center;
+}

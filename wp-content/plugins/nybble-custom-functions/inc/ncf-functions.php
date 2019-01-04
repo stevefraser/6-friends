@@ -29,7 +29,6 @@ if ( ! function_exists( 'custom_theme_setup' ) ) :
 
 
 
-
 	}
 
 endif;

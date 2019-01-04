@@ -16,6 +16,10 @@ if ( ! function_exists( 'six_friends_setup' ) ) :
 	 * as indicating support for post thumbnails.
 	 */
 	function six_friends_setup() {
+		
+		// Declaration of WooCommerce Support - removes warning
+ 		add_theme_support( 'woocommerce' );
+
 		/*
 		 * Make theme available for translation.
 		 * Translations can be filed in the /languages/ directory.

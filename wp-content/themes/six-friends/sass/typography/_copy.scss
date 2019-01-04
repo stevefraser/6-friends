@@ -43,3 +43,11 @@ mark, ins {
 big {
 	font-size: 125%;
 }
+
+
+a, a:visited {
+	text-decoration: none;
+}
+a:focus {
+	outline: none;
+}

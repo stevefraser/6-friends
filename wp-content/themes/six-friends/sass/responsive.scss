@@ -1,0 +1,184 @@
+
+/* #MEDIA QUERIES  ============================================================================= */
+
+
+/* Smaller than standard 960 (devices and browsers) */
+@media only screen and (max-width: 1199px) {
+
+	
+
+}
+
+
+
+
+
+
+
+/* All Mobile Sizes (devices and browser) */
+@media only screen and (max-width: 899px) {
+
+	.child-element:not(.keep) {
+		top: auto;
+	    transform: none;
+	    -moz-transform: none;
+	    -webkit-transform: none;
+	}
+	.news-item {
+    width: 45%;
+    margin: 0 2% 2rem;
+	}
+
+	
+
+}
+
+
+
+
+
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width: 699px) {
+
+	.image-content-wrap {
+		height: auto;
+		.side-content {
+			width: 100%;
+			float: none;
+		}
+		.side-image {
+			width: 100%;
+			float: none;
+			height: 400px;
+		}
+	}
+	#homeSlider {
+		.nav-logo {
+			top: 8px;
+	    width: 100px;
+		}
+		.slide-wrapper {
+			.slide-text {
+				padding: 2rem;
+				.slide-delay-2 {
+					p {
+						font-size: 1rem;
+				    line-height: 1.4rem;
+					}
+				}
+			}
+		}
+	} 
+
+}
+
+
+
+
+
+
+
+
+
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width: 599px) {
+
+	.single-product-item {
+		width: 100%;
+		float: none;
+		h3, h4 {
+			text-align: center;
+		}
+		.price-point {
+			line-height: 2rem;
+	    float: left;
+	    margin-right: 1rem;
+		}
+	}
+	header {
+		height: 70px;
+		.menu-main-menu-top-container {
+			display: none;
+		}
+		.nav-logo {
+			height: 55px;
+	    margin-top: 5px;
+	    margin-left: 15px;
+		}
+		.secondary-cart {
+			top: 8px;
+		}
+	}
+	.cart-dropdown {
+		top: 70px;
+	}
+	.overlay .menu-drop-down-menu-container ul li a {
+		font-size: 1.5rem;
+	}
+	.news-item {
+    width: 45%;
+    margin: 0 2% 2rem;
+	}
+	.news-item {
+    width: 100%;
+    margin: 0 auto 2rem;
+	}
+	
+	 
+
+
+}
+
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width: 399px) {
+
+	.cart-dropdown {
+		width: 100%;
+		.cart-dropdown-inner {
+			padding: 2rem 0;
+		}
+		h4 {
+			margin-left: 1rem;
+			font-size: 1.3rem;
+		}
+		.dropdown-cart-wrap {
+			&.product-row {
+				.dropdown-cart-left {
+					margin: 0;
+				}
+				.dropdown-cart-right {
+					p {
+						margin: 0;
+					}
+				}
+			}
+			&.dropdown-cart-links {
+				padding-left: 0;
+				.dropdown-cart-link {
+					margin-left: 0.5rem;
+					a {
+						margin: 0;
+						padding: 0 20px;
+					}
+				}
+				.dropdown-checkout-link {
+					margin-left: 0.5rem;
+				}
+			}
+		}
+	}
+
+	.single-product-item {
+		padding: 3rem 0;
+	}
+
+
+}
+
+ 
+
+
+

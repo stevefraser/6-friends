@@ -1,0 +1,24 @@
+footer {
+  padding: 4rem 0;
+  font-size: 0.9rem;
+}
+
+#newsletter-signup {
+	display: none;
+	backface-visibility: hidden;  
+  width: 90%;
+  max-width: 660px;
+  line-height: 2;
+  margin: 0;
+  padding: 3rem 2rem;
+  position: relative;
+  z-index: 3;
+  h4 {
+  	margin: 0;
+  }
+  .gform_wrapper {
+  	label {
+  		display: none;
+  	}
+  }
+}

@@ -8,8 +8,40 @@ textarea {
 	font-family: $font__main;
 	@include font-size(1);
 	line-height: $font__line-height-body;
+	letter-spacing: 0.1pt;
 }
 
 @import "headings";
 
 @import "copy";
+
+button, .button {
+	padding: 0.8rem 1.2rem;
+  display: inline-block;
+  text-decoration: none;
+  color: #fff;
+	background: $color__burgundy;
+	opacity: 1;
+  filter: alpha(opacity=100);
+  transition: ease-in-out all 0.2s;
+	&.white {
+		background: #fff;
+		color: $color__burgundy;
+	}
+	&:hover {
+		opacity: 0.7;
+  	filter: alpha(opacity=70);
+	}
+	&:focus {
+		outline: none !IMPORTANT;
+	}
+	&.remove-product {
+		background-color: $color__burgundy;
+    border: none;
+    height: 30px;
+    line-height: 1px;
+    cursor: pointer;
+    color: #fff;
+    border-radius: 0;
+	}
+}

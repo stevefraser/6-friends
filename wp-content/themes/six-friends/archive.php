@@ -10,22 +10,11 @@
 get_header();
 ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+<div class="header-spacer s90"></div>
 
-		<?php if ( have_posts() ) : ?>
+	<div class="container">
 
-			<header class="page-header">
-				<?php
-				the_archive_title( '<h1 class="page-title">', '</h1>' );
-				the_archive_description( '<div class="archive-description">', '</div>' );
-				?>
-			</header><!-- .page-header -->
-
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
+		<?php if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 				/*
 				 * Include the Post-Type-specific template for the content.
@@ -45,9 +34,9 @@ get_header();
 		endif;
 		?>
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
+	</div>
 
 <?php
-get_sidebar();
+
+
 get_footer();

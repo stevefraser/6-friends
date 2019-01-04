@@ -7,7 +7,7 @@
 
 
 
-#nav-icon {
+.nav-icon {
     width: 40px;
     height: 25px;
     position: absolute;
@@ -21,7 +21,7 @@
     transition: .5s ease-in-out;
     cursor: pointer;
     top: 50%;
-    right: 35px;
+    right: 20px;
     transform: translateY(-50%);
 
     span {
@@ -29,7 +29,7 @@
 	    position: absolute;
   	    height: 4px;
 	    width: 100%;
-	    background: $color__maroon;
+	    background: $color__burgundy;
 	    border-radius: 2px;
 	    opacity: 1;
 	    left: 0;
@@ -64,7 +64,7 @@
 		}
 	}
 	&:hover span {
-	    //background: $color__maroon;
+	    //background: $color__burgundy;
 	    &:nth-child(1) {
 			    -webkit-transform: rotate(45deg);
 			    -moz-transform: rotate(45deg);
@@ -72,7 +72,7 @@
 			    transform: rotate(45deg);
 			    top: -3px;
 			    left: 8px;
-			    background: $color__maroon;
+			    background: $color__burgundy;
 			}
 			&:nth-child(2) {
 			    width: 0%;
@@ -85,7 +85,7 @@
 			    transform: rotate(-45deg);
 			    top: 26px;
 			    left: 8px;
-			    background: $color__maroon;
+			    background: $color__burgundy;
 			}
 	}
 	&.small {
@@ -100,7 +100,7 @@
 			//     transform: rotate(45deg);
 			//     top: -3px;
 			//     left: 8px;
-			//     background: $color__maroon;
+			//     background: $color__burgundy;
 			// }
 			// &:nth-child(2) {
 			//     width: 0%;
@@ -113,7 +113,7 @@
 			//     transform: rotate(-45deg);
 			//     top: 26px;
 			//     left: 8px;
-			//     background: $color__maroon;
+			//     background: $color__burgundy;
 			// }
 
 		}
