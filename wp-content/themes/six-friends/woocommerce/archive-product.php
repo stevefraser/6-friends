@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header(); ?>
 
 
-<div class="header-spacer"></div>
+<div class="header-spacer s90"></div>
 
 <?php //get_template_part('snippet','header'); ?>
 

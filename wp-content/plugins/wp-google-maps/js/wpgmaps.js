@@ -87,6 +87,9 @@ function InitMap() {
 	
 	if(wpgmaps_localize[wpgmaps_mapid].other_settings.store_locator_style == 'modern')
 	{
+		if(!MYMAP.map)
+			return;
+		
 		MYMAP.modernStoreLocator = WPGMZA.ModernStoreLocator.createInstance(wpgmaps_mapid);
 		wpgmza_create_places_autocomplete();
 	}
@@ -499,6 +502,10 @@ MYMAP.placeMarkers = function(filename,map_id,radius,searched_center,distance_ty
 
                         var html='<span style=\'min-width:100px; display:block;\'>'+wpmgza_address+'</span>'+d_string;
                         if (wpmgza_infoopen === "1" && !wpgmaps_localize_global_settings["wpgmza_settings_disable_infowindows"]) {
+							
+							if(!window.infoWindow)
+								wpgmza_init_infowindow();
+							
                             infoWindow.setContent(html);
                             infoWindow.open(MYMAP.map, marker);
                         }
@@ -517,6 +524,9 @@ MYMAP.placeMarkers = function(filename,map_id,radius,searched_center,distance_ty
 								infoWindow.close();
 							if(!wpgmaps_localize_global_settings["wpgmza_settings_disable_infowindows"])
 							{
+								if(!window.infoWindow)
+									wpgmza_init_infowindow();
+								
 								infoWindow.setContent(html);
 								infoWindow.open(MYMAP.map, marker);
 							}
@@ -601,8 +611,6 @@ MYMAP.placeMarkers = function(filename,map_id,radius,searched_center,distance_ty
 						// Prevent JS error in Gutenberg editor (Temporary fix)
 						if(WPGMZA.is_admin == "1")
 							return;
-						
-                        MYMAP.bounds.extend(point);
 						
                         if (show_marker_radius === true) {
 							

@@ -29,8 +29,57 @@ header {
     transform: translateY(-50%);
     ul.topmenu {
     	margin-bottom: 0;
+      display: inline-block;
+      position: relative;
+      nav {
+        a:hover ~ a::after {
+          left: 0;
+          right: 100%;
+        }
+        a:hover::after {
+          left: 0;
+          right: 0;
+        }
+      }
+      a {
+        display: inline-block;
+        -webkit-font-smoothing: antialiased;
+        &::after {
+          content: "";
+          background: $color__burgundy;
+          height: 3px;
+          position: absolute;
+          bottom: -3px;
+          transition: .16s all 0.025s;
+          left: 100%;
+          right: 0;
+        }
+        &:hover ~ a::after {
+          left: 0;
+          right: 100%;
+        }
+        &:hover::after {
+          left: 15%;
+          right: 15%;
+        }
+      }
+      &.current-menu-item a {
+        position: relative;
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: 0px;
+          width: 70%;
+          left: 15%;
+        }
+        &:hover::after {
+          left: 15%;
+          right: 15%;
+        }
+      }
     	li {
     		display: inline-block;
+        position: relative;
     		a {
     			font-family: 'Gotham-Book';
     			text-transform: uppercase;
@@ -48,6 +97,11 @@ header {
     }
   }
 }
+
+
+
+
+  
 
 
 

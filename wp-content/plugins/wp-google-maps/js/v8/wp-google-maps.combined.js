@@ -322,13 +322,25 @@ jQuery(function($) {
 		},
 		
 		/**
-		 * This function will get the users position, it first attempts to get high accuracy position (mobile with GPS sensors etc.), if that fails (desktops will time out) then it tries again without high accuracy enabled.
-		 * @method getCurrentPosition
+		 * @function getCurrentPosition
+		 * @summary This function will get the users position, it first attempts to get
+		 * high accuracy position (mobile with GPS sensors etc.), if that fails
+		 * (desktops will time out) then it tries again without high accuracy
+		 * enabled
 		 * @static
 		 * @return {object} The users position as a LatLng literal
 		 */
-		getCurrentPosition: function(callback)
+		getCurrentPosition: function(callback, watch)
 		{
+			var trigger = "userlocationfound";
+			var nativeFunction = "getCurrentPosition";
+			
+			if(watch)
+			{
+				trigger = "userlocationupdated";
+				nativeFunction = "watchPosition";
+			}
+			
 			if(!navigator.geolocation)
 			{
 				console.warn("No geolocation available on this device");
@@ -339,7 +351,7 @@ jQuery(function($) {
 				enableHighAccuracy: true
 			};
 			
-			navigator.geolocation.getCurrentPosition(function(position) {
+			navigator.geolocation[nativeFunction](function(position) {
 				if(callback)
 					callback(position);
 				
@@ -349,7 +361,7 @@ jQuery(function($) {
 				
 				options.enableHighAccuracy = false;
 				
-				navigator.geolocation.getCurrentPosition(function(position) {
+				navigator.geolocation[nativeFunction](function(position) {
 					if(callback)
 						callback(position);
 					
@@ -362,6 +374,11 @@ jQuery(function($) {
 				
 			},
 			options);
+		},
+		
+		watchPosition: function(callback)
+		{
+			return WPGMZA.getCurrentPosition(callback, true);
 		},
 		
 		/**
@@ -1800,14 +1817,15 @@ jQuery(function($) {
 	 */
 	WPGMZA.LatLngBounds.prototype.extend = function(latLng)
 	{
-		if(this.isInInitialState())
-		{
-			this.north = this.south = this.west = this.east = new WPGMZA.LatLng(latLng);
-			return;
-		}
-		
 		if(!(latLng instanceof WPGMZA.LatLng))
 			latLng = new WPGMZA.LatLng(latLng);
+		
+		if(this.isInInitialState())
+		{
+			this.north = this.south = latLng.lat;
+			this.west = this.east = latLng.lng;
+			return;
+		}
 		
 		if(latLng.lat < this.north)
 			this.north = latLng.lat;
@@ -4487,7 +4505,7 @@ jQuery(function($) {
  */
 jQuery(function ($) {
 
-	if (!window.wp || !wp.i18n || !wp.blocks) return;
+	if (!window.wp || !wp.i18n || !wp.blocks || !wp.editor) return;
 
 	var __ = wp.i18n.__;
 	var registerBlockType = wp.blocks.registerBlockType;
@@ -4501,7 +4519,9 @@ jQuery(function ($) {
 	    Tooltip = _wp$components.Tooltip,
 	    PanelBody = _wp$components.PanelBody,
 	    TextareaControl = _wp$components.TextareaControl,
+	    CheckboxControl = _wp$components.CheckboxControl,
 	    TextControl = _wp$components.TextControl,
+	    SelectControl = _wp$components.SelectControl,
 	    RichText = _wp$components.RichText;
 
 
@@ -4514,10 +4534,87 @@ jQuery(function ($) {
 	};
 
 	WPGMZA.Integration.Gutenberg.prototype.getBlockInspectorControls = function (props) {
+
+		/*
+  <TextControl
+  				name="overrideWidthAmount"
+  				label={__("Override Width Amount")}
+  				checked={props.overrideWidthAmount}
+  				onChange={onPropertiesChanged}
+  				/>
+  			
+  			<SelectControl
+  				name="overrideWidthUnits"
+  				label={__("Override Width Units")}
+  				options={[
+  					{value: "px", label: "px"},
+  					{value: "%", label: "%"},
+  					{value: "vw`", label: "vw"},
+  					{value: "vh", label: "vh"}
+  				]}
+  				onChange={onPropertiesChanged}
+  				/>
+  				
+  			<CheckboxControl
+  				name="overrideHeight"
+  				label={__("Override Height")}
+  				checked={props.overrideWidth}
+  				onChange={onPropertiesChanged}
+  				/>
+  				
+  			<TextControl
+  				name="overrideHeightAmount"
+  				label={__("Override Height Amount")}
+  				checked={props.overrideWidthAmount}
+  				onChange={onPropertiesChanged}
+  				/>
+  			
+  			<SelectControl
+  				name="overrideHeightUnits"
+  				label={__("Override Height Units")}
+  				options={[
+  					{value: "px", label: "px"},
+  					{value: "%", label: "%"},
+  					{value: "vw`", label: "vw"},
+  					{value: "vh", label: "vh"}
+  				]}
+  				onChange={onPropertiesChanged}
+  				/>
+  				*/
+
+		var onOverrideWidthCheckboxChanged = function onOverrideWidthCheckboxChanged(value) {};
+
 		return React.createElement(
 			InspectorControls,
 			{ key: "inspector" },
-			React.createElement(PanelBody, { title: __('Map Settings') })
+			React.createElement(
+				PanelBody,
+				{ title: __('Map Settings') },
+				React.createElement(
+					"p",
+					{ "class": "map-block-gutenberg-button-container" },
+					React.createElement(
+						"a",
+						{ href: WPGMZA.adminurl + "admin.php?page=wp-google-maps-menu&action=edit&map_id=1",
+							target: "_blank",
+							"class": "button button-primary" },
+						React.createElement("i", { "class": "fa fa-pencil-square-o", "aria-hidden": "true" }),
+						__('Go to Map Editor')
+					)
+				),
+				React.createElement(
+					"p",
+					{ "class": "map-block-gutenberg-button-container" },
+					React.createElement(
+						"a",
+						{ href: "https://www.wpgmaps.com/documentation/creating-your-first-map/",
+							target: "_blank",
+							"class": "button button-primary" },
+						React.createElement("i", { "class": "fa fa-book", "aria-hidden": "true" }),
+						__('View Documentation')
+					)
+				)
+			)
 		);
 	};
 
@@ -4545,7 +4642,7 @@ jQuery(function ($) {
 					React.createElement(
 						"span",
 						{ "class": "wpgmza-gutenberg-block-title" },
-						__("WP Google Maps")
+						__("Your map will appear here on your websites front end")
 					)
 				)];
 			},
@@ -5214,8 +5311,23 @@ jQuery(function($) {
 			southWest = {lat: southWest.lat, lng: southWest.lng};
 		if(northEast instanceof WPGMZA.LatLng)
 			northEast = {lat: northEast.lat, lng: northEast.lng};
+		else if(southWest instanceof WPGMZA.LatLngBounds)
+		{
+			var bounds = southWest;
+			
+			southWest = {
+				lat: bounds.south,
+				lng: bounds.west
+			};
+			
+			northEast = {
+				lat: bounds.north,
+				lng: bounds.east
+			};
+		}
 		
-		this.googleMap.fitBounds(southWest, northEast);
+		var nativeBounds = new google.maps.LatLngBounds(southWest, northEast);
+		this.googleMap.fitBounds(nativeBounds);
 	}
 	
 	/**
@@ -6575,8 +6687,13 @@ jQuery(function($) {
 	
 	WPGMZA.OLMap.prototype.getTileLayer = function()
 	{
+		var options = {};
+		
+		if(WPGMZA.settings.tile_server_url)
+			options.url = WPGMZA.settings.tile_server_url;
+		
 		return new ol.layer.Tile({
-			source: new ol.source.OSM()
+			source: new ol.source.OSM(options)
 		});
 	}
 	
@@ -6647,6 +6764,21 @@ jQuery(function($) {
 	 */
 	WPGMZA.OLMap.prototype.fitBounds = function(southWest, northEast)
 	{
+		if(southWest instanceof WPGMZA.LatLngBounds)
+		{
+			var bounds = southWest;
+			
+			southWest = {
+				lat: bounds.south,
+				lng: bounds.west,
+			};
+			
+			northEast = {
+				lat: southWest.north,
+				lng: southWest.east
+			};
+		}
+		
 		this.olMap.getView().fitExtent(
 			[southWest.lng, southWest.lat, northEast.lng, northEast.lat],
 			this.olMap.getSize()
@@ -6667,7 +6799,7 @@ jQuery(function($) {
 	
 	WPGMZA.OLMap.prototype.getZoom = function()
 	{
-		return Math.round( this.olMap.getView().getZoom() ) + 1;
+		return Math.round( this.olMap.getView().getZoom() );
 	}
 	
 	WPGMZA.OLMap.prototype.setZoom = function(value)
@@ -6880,7 +7012,7 @@ jQuery(function($) {
 			parseFloat(this.lat)
 		]);
 		
-		this.element = $("<div class='ol-marker'><img src='" + WPGMZA.settings.default_marker_icon + "'/></div>")[0];
+		this.element = $("<div class='ol-marker'><img src='" + WPGMZA.settings.default_marker_icon + "' alt=''/></div>")[0];
 		this.element.wpgmzaMarker = this;
 		
 		$(this.element).on("mouseover", function(event) {

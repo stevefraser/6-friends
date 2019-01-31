@@ -18,7 +18,7 @@ function crispshop_add_cart_single_ajax() {
 
 	<span style="display: none;" class="item-count"><?php echo $item_count; ?></span>
 
-	<h4>In your apple bin...</h4>
+	<h4>In your wine bin...</h4>
 
 	<?php foreach($items as $item => $values) { 
 		$_product = $values['data']->post; ?>
