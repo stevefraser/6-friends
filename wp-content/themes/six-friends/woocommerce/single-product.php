@@ -48,6 +48,8 @@ get_header(); the_post(); ?>
 	        $top_name = get_field('product_top_name');
 					$sub_name = get_field('product_sub_name');
 
+					$permalink = get_permalink( $product_ID );
+
 					echo '<h3>' . $top_name . '</h3>';
 					echo '<h4>' . $sub_name . '</h4>';
 					//the_post_thumbnail();

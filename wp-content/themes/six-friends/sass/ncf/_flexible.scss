@@ -69,6 +69,25 @@
 }
 
 
+.full-width-content {
+  p {
+    a, a:visited {
+      &.solid-button {
+        background-color: #952c47;
+        transition: ease-in-out all 0.2s;
+        color: #fff;
+        padding: 0.8rem 1.2rem;
+        display: inline-block;
+        text-decoration: none;
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+}
+
+
 .cta-bar {
 	padding-left: 2rem;
 	padding-right: 2rem;

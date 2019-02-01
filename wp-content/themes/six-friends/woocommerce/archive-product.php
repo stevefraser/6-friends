@@ -49,11 +49,13 @@ get_header(); ?>
 			if ($wc_query->have_posts()) : 
 				while ($wc_query->have_posts()) :
 					echo '<div class="single-product-item">';
-		                $wc_query->the_post(); 
-		                $product = get_product(get_the_ID());
+            $wc_query->the_post(); 
+            $product = wc_get_product(get_the_ID());
+            $the_id = $product->get_id();
 
-		                $top_name = get_field('product_top_name');
+            $top_name = get_field('product_top_name');
 						$sub_name = get_field('product_sub_name');
+						$permalink = get_permalink( $the_id );
 
 						echo '<a href="' . get_permalink( $the_id ) . '">';
 						echo '<h3>' . $top_name . '</h3>';
