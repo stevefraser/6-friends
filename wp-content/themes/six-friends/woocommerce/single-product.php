@@ -41,7 +41,7 @@ get_header(); the_post(); ?>
 				global $product;
 				$product_ID = get_the_ID();
 
-				echo '<div class="image-wrap">' . get_the_post_thumbnail() . '</div>';
+				echo '<div class="image-wrap desktop">' . get_the_post_thumbnail() . '</div>';
 
 				echo '<div class="side-content">';
 
@@ -135,6 +135,9 @@ get_header(); the_post(); ?>
 
 				
 				echo '<div class="clear"></div>';
+
+				echo '<div class="image-wrap mobile">' . get_the_post_thumbnail() . '</div>';
+				
 			echo '</div>';
 
 		echo '</div>';

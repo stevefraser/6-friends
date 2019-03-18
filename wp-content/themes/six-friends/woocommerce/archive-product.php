@@ -34,7 +34,7 @@ get_header(); ?>
 		
     <?php 
 
-    	the_content(); 
+    	//the_content(); 
 
     	//echo '<hr>';
 

@@ -85,16 +85,35 @@
 /* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
 @media only screen and (max-width: 599px) {
 
-	.single-product-item {
-		width: 100%;
-		float: none;
-		h3, h4 {
-			text-align: center;
-		}
-		.price-point {
-			line-height: 2rem;
-	    float: left;
-	    margin-right: 1rem;
+	.product-wrapper {
+		.single-product-item {
+			width: 100%;
+			float: none;
+			h3, h4 {
+				text-align: center;
+			}
+			.price-point {
+				line-height: 2rem;
+		    float: left;
+		    margin-right: 1rem;
+			}
+			.image-wrap {
+		    width: 100%;
+		    float: none;
+		    margin-right: 0;
+		    margin-top: 2rem;
+		    &.desktop {
+		      display: none;
+		    }
+		    &.mobile {
+		      display: block;
+		    }
+		  }
+		  .side-content {
+		    width: 100%;
+		    float: none;
+		    padding-top: 1rem;
+		  }
 		}
 	}
 	header {

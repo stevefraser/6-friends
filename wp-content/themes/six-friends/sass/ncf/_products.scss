@@ -8,6 +8,12 @@
     width: 45%;
     float: left;
     margin-right: 5%;
+    &.desktop {
+      display: block;
+    }
+    &.mobile {
+      display: none;
+    }
   }
   img {
     width: 100%;

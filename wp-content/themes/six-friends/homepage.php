@@ -18,7 +18,7 @@ get_header();
 <div id="homeSlider" class="flexslider">
 
 	<div class="nav-logo">
-      <img src="<?php bloginfo('template_directory'); ?>/img/six-friends-logo.png" alt="Six Friends" />
+      <img src="<?php bloginfo('template_directory'); ?>/img/six-friends-logo-white.png" alt="Six Friends" />
   </div>
 
 	<div class="nav-icon">
